@@ -34,7 +34,7 @@ public enum Rank {
     }
 
     private static void validateMatchCount(int matchCount) {
-        if (matchCount < 0 || matchCount > LOTTO_NUMBER_COUNT) {
+        if (matchCount < 0 || matchCount > NUMBER_COUNT) {
             throw new RankException(ErrorMessage.RANK_INVALID_MATCH_COUNT.getMessage());
         }
     }
