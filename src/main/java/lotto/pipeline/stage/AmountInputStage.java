@@ -3,6 +3,7 @@ package lotto.pipeline.stage;
 import lotto.domain.LottoRules;
 import lotto.exception.ErrorMessage;
 import lotto.util.InputParser;
+import lotto.util.RetryingInputSupplier;
 import lotto.view.InputView;
 
 @SuppressWarnings("ClassCanBeRecord")
@@ -16,16 +17,12 @@ public class AmountInputStage implements Stage<Void, Integer> {
     }
 
     @Override
-    public Integer execute(Void input) {
-        while (true) {
-            try {
-                int amount = InputParser.parseNumber(inputView.readAmount());
-                validate(amount);
-                return amount;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+    public Integer execute(Void ignore) {
+        return RetryingInputSupplier.get(() -> {
+            int amount = InputParser.parseNumber(inputView.readAmount());
+            validate(amount);
+            return amount;
+        });
     }
 
     private void validate(int amount) {

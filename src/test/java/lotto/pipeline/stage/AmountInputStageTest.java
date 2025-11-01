@@ -17,7 +17,7 @@ class AmountInputStageTest {
     }
 
     @Test
-    void 잘못된_구매_금액을_입력받으면_예외가_발생한다() {
+    void 구매_금액을_올바르게_입력할_때까지_계속_입력받는다() {
         String[] inputs = new String[]{"10000000", "9500", "8000"};
         FakeInputView inputView = new FakeInputView(inputs);
         AmountInputStage stage = new AmountInputStage(inputView);
