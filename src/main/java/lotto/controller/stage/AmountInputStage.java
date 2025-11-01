@@ -6,7 +6,7 @@ import lotto.util.InputParser;
 import lotto.view.InputView;
 
 @SuppressWarnings("ClassCanBeRecord")
-public class AmountInputStage implements Stage<Void, Integer>{
+public class AmountInputStage implements Stage<Void, Integer> {
     private static final int MAX_AMOUNT = 1_000_000;
 
     private final InputView inputView;
@@ -17,9 +17,15 @@ public class AmountInputStage implements Stage<Void, Integer>{
 
     @Override
     public Integer execute(Void input) {
-        int amount = InputParser.parseNumber(inputView.readAmount());
-        validate(amount);
-        return amount;
+        while (true) {
+            try {
+                int amount = InputParser.parseNumber(inputView.readAmount());
+                validate(amount);
+                return amount;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private void validate(int amount) {
