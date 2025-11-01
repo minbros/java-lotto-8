@@ -28,4 +28,13 @@ class LottoTest {
                 .isInstanceOf(LottoException.class)
                 .hasMessageContaining(ErrorMessage.LOTTO_DUPLICATE_NUMBERS.getMessage());
     }
+
+    @Test
+    void 로또_번호는_모두_1부터_45까지의_정수여야_한다() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 46);
+
+        assertThatThrownBy(() -> new Lotto(numbers))
+                .isInstanceOf(LottoException.class)
+                .hasMessageContaining(ErrorMessage.LOTTO_INVALID_NUMBER_VALUE.getMessage());
+    }
 }
