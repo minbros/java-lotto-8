@@ -1,4 +1,4 @@
-package lotto.controller.stage;
+package lotto.pipeline.stage;
 
 @FunctionalInterface
 public interface Stage<I, O> {

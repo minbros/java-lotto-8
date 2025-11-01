@@ -1,4 +1,4 @@
-package lotto.controller.stage;
+package lotto.pipeline.stage;
 
 import camp.nextstep.edu.missionutils.test.Assertions;
 import lotto.domain.Lotto;

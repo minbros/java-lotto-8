@@ -1,6 +1,6 @@
-package lotto.controller;
+package lotto.pipeline;
 
-import lotto.controller.stage.Stage;
+import lotto.pipeline.stage.Stage;
 
 import java.util.function.Function;
 

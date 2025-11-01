@@ -1,4 +1,4 @@
-package lotto.controller.stage;
+package lotto.pipeline.stage;
 
 import lotto.domain.Lotto;
 import lotto.dto.LottoData;
