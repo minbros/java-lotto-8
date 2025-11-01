@@ -4,9 +4,11 @@ import lotto.exception.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 class InputParserTest {
     @Test
@@ -31,5 +33,22 @@ class InputParserTest {
         assertThatThrownBy(() -> InputParser.parseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
+    }
+
+    @Test
+    void 당첨_번호를_리스트로_변환한다() {
+        String input = "1, 2, 3, 4, 5, 6";
+
+        List<Integer> numbers = InputParser.parseNumbers(input);
+
+        assertThat(numbers).containsExactly(1, 2, 3, 4, 5, 6);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,,2,,3,,4,,5,,6", ",1,2,3,4,5,6", "1,2,3,4,5,6,"})
+    void 잘못된_당첨_번호를_입력하면_예외가_발생한다(String input) {
+        assertThatThrownBy(() -> InputParser.parseNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.INPUT_IS_INVALID.getMessage());
     }
 }
