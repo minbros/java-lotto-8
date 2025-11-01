@@ -4,7 +4,6 @@ import lotto.domain.LottoRules;
 
 public enum ErrorMessage {
     AMOUNT_DOES_NOT_FIT("구매 금액은 " + LottoRules.PRICE_PER_LOTTO + " 단위여야 합니다."),
-    AMOUNT_INVALID_VALUE("구매 금액이 올바르지 않습니다."),
     AMOUNT_TOO_LARGE("구매 금액이 너무 큽니다."),
 
     BONUS_DUPLICATE_NUMBERS("보너스 번호가 당첨 번호와 중복됩니다."),
