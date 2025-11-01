@@ -33,6 +33,14 @@ public enum Rank {
                 .orElse(NONE);
     }
 
+    public boolean hasBonusMatch() {
+        return matchesBonus;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
     private static void validateMatchCount(int matchCount) {
         if (matchCount < 0 || matchCount > NUMBER_COUNT) {
             throw new RankException(ErrorMessage.RANK_INVALID_MATCH_COUNT.getMessage());
