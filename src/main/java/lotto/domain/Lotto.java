@@ -13,6 +13,10 @@ public record Lotto(List<Integer> numbers) {
         this.numbers = List.copyOf(numbers);
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
     private void validate(List<Integer> numbers) {
         if (hasInvalidCount(numbers)) {
             throw new LottoException(ErrorMessage.LOTTO_INVALID_NUMBER_COUNT.getMessage());

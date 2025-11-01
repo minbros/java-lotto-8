@@ -2,22 +2,17 @@ package lotto.domain;
 
 import lotto.exception.ErrorMessage;
 import lotto.exception.LottoException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static lotto.domain.LottoRules.*;
+import static lotto.domain.LottoRules.MAXIMUM_NUMBER;
+import static lotto.domain.LottoRules.MINIMUM_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningNumberTest {
-    private Lotto numbers;
-
-    @BeforeEach
-    void setUp() {
-        numbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-    }
+    private final List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
 
     @ParameterizedTest
     @ValueSource(ints = {MINIMUM_NUMBER - 1, MAXIMUM_NUMBER + 1})
