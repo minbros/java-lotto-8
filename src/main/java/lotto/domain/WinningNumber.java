@@ -17,11 +17,13 @@ public record WinningNumber(Lotto lotto, int bonusNumber) {
     }
 
     public int getMatchCount(Lotto otherLotto) {
-        return 0;
+        return (int) lotto.numbers().stream()
+                .filter(otherLotto::contains)
+                .count();
     }
 
     public boolean matchesBonus(Lotto otherLotto) {
-        return false;
+        return otherLotto.contains(bonusNumber);
     }
 
     private void validateBonusNumber(Lotto lotto, int bonusNumber) {
