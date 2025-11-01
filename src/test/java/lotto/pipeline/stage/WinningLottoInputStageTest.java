@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
 
 class WinningLottoInputStageTest {
     private final Lotto sampleLotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
@@ -21,24 +20,24 @@ class WinningLottoInputStageTest {
 
         LottoData lottoData = stage.execute(List.of(sampleLotto));
 
-        assertLottoData(lottoData, sampleLotto);
+        assertLottoData(lottoData);
     }
 
     @Test
     void 당첨_번호를_올바르게_입력할_때까지_계속_입력받는다() {
-        String[] inputs = new String[]{"1, 2, 3, 4, 5, 100", "1, 2, 3, 4, 5, 5", "1, 2, 3, 4, 5, 6", "100", "7"};
+        String[] inputs = new String[]{"1, 2, 3, 4, 5, 100", "1, 2, 3, 4, 5, 5", "1, 2, 3, 4, 5, 6", "7"};
         FakeInputView inputView = new FakeInputView(inputs);
         WinningLottoInputStage stage = new WinningLottoInputStage(inputView);
 
         LottoData lottoData = stage.execute(List.of(sampleLotto));
 
-        assertLottoData(lottoData, sampleLotto);
+        assertLottoData(lottoData);
     }
 
-    private static void assertLottoData(LottoData lottoData, Lotto lotto) {
-        assertThat(lottoData.lottoList()).containsExactly(lotto);
+    private void assertLottoData(LottoData lottoData) {
+        assertThat(lottoData.lottoList()).containsExactly(sampleLotto);
         assertThat(lottoData.winningLotto())
                 .extracting(w -> w.lotto().getNumbers(), WinningLotto::bonusNumber)
-                .containsExactly(tuple(List.of(1, 2, 3, 4, 5, 6), 7));
+                .containsExactly(List.of(1, 2, 3, 4, 5, 6), 7);
     }
 }

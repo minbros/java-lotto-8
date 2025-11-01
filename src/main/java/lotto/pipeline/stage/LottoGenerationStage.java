@@ -23,6 +23,6 @@ public class LottoGenerationStage implements Stage<Integer, List<Lotto>> {
             lottoList.add(lotto);
         }
         outputView.printLottoList(lottoList);
-        return lottoList;
+        return List.copyOf(lottoList);
     }
 }
