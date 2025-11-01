@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.exception.ErrorMessage;
+import lotto.exception.RankException;
+
 import java.util.Arrays;
 
 public enum Rank {
@@ -9,6 +12,8 @@ public enum Rank {
     FOURTH(4, false, 50_000),
     FIFTH(3, false, 5_000),
     NONE(0, false, 0);
+
+    private static final int MAX_MATCH_COUNT = 6;
 
     private final int matchCount;
     private final boolean matchesBonus;
@@ -21,10 +26,17 @@ public enum Rank {
     }
 
     public static Rank of(int matchCount, boolean matchesBonus) {
+        validateMatchCount(matchCount);
         return Arrays.stream(values())
                 .filter(rank -> rank.matches(matchCount, matchesBonus))
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    private static void validateMatchCount(int matchCount) {
+        if (matchCount < 0 || matchCount > MAX_MATCH_COUNT) {
+            throw new RankException(ErrorMessage.RANK_INVALID_MATCH_COUNT.getMessage());
+        }
     }
 
     private boolean matches(int matchCount, boolean matchesBonus) {
