@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
+    private static final int LOTTO_MINIMUM = 1;
+    private static final int LOTTO_MAXIMUM = 45;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -20,6 +23,9 @@ public class Lotto {
         }
         if (numbers.size() != new HashSet<>(numbers).size()) {
             throw new LottoException(ErrorMessage.LOTTO_DUPLICATE_NUMBERS.getMessage());
+        }
+        if (numbers.stream().anyMatch(num -> num < LOTTO_MINIMUM || num > LOTTO_MAXIMUM)) {
+            throw new LottoException(ErrorMessage.LOTTO_INVALID_NUMBER_VALUE.getMessage());
         }
     }
 }
