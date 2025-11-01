@@ -7,12 +7,12 @@ import java.util.List;
 
 import static lotto.domain.LottoRules.isOutOfRange;
 
-public record WinningNumber(Lotto lotto, int bonusNumber) {
-    public WinningNumber(List<Integer> numbers, int bonusNumber) {
+public record WinningLotto(Lotto lotto, int bonusNumber) {
+    public WinningLotto(List<Integer> numbers, int bonusNumber) {
         this(new Lotto(numbers), bonusNumber);
     }
 
-    public WinningNumber {
+    public WinningLotto {
         validateBonusNumber(lotto, bonusNumber);
     }
 
