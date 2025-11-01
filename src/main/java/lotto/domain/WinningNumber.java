@@ -22,7 +22,7 @@ public record WinningNumber(Lotto lotto, int bonusNumber) {
                 .count();
     }
 
-    public boolean matchesBonus(Lotto otherLotto) {
+    public boolean hasBonus(Lotto otherLotto) {
         return otherLotto.contains(bonusNumber);
     }
 

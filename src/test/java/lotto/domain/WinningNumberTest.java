@@ -36,7 +36,7 @@ class WinningNumberTest {
         WinningNumber winningNumber = new WinningNumber(List.of(3, 4, 5, 6, 7, 8), 1);
 
         int matchCount = winningNumber.getMatchCount(lotto);
-        boolean matchesBonus = winningNumber.matchesBonus(lotto);
+        boolean matchesBonus = winningNumber.hasBonus(lotto);
 
         assertThat(matchCount).isEqualTo(4);
         assertThat(matchesBonus).isTrue();
