@@ -17,7 +17,7 @@ public record WinningLotto(Lotto lotto, int bonusNumber) {
     }
 
     public int getMatchCount(Lotto otherLotto) {
-        return (int) lotto.numbers().stream()
+        return (int) lotto.getNumbers().stream()
                 .filter(otherLotto::contains)
                 .count();
     }

@@ -7,14 +7,21 @@ import java.util.List;
 
 import static lotto.domain.LottoRules.*;
 
-public record Lotto(List<Integer> numbers) {
+@SuppressWarnings("ClassCanBeRecord")
+public class Lotto {
+    private final List<Integer> numbers;
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = List.copyOf(numbers);
+        this.numbers = numbers.stream().sorted().toList();
     }
 
     public boolean contains(int number) {
         return numbers.contains(number);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
