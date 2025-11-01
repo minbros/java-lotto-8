@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.controller.stage.PipeLineStage;
+import lotto.controller.stage.Stage;
 
 import java.util.function.Function;
 
@@ -11,11 +11,11 @@ public class LottoPipeline<I, O> {
         this.function = function;
     }
 
-    public static <I, O> LottoPipeline<I, O> of(PipeLineStage<I, O> stage) {
+    public static <I, O> LottoPipeline<I, O> of(Stage<I, O> stage) {
         return new LottoPipeline<>(stage::execute);
     }
 
-    public <N> LottoPipeline<I, N> then(PipeLineStage<O, N> nextStage) {
+    public <N> LottoPipeline<I, N> then(Stage<O, N> nextStage) {
         return new LottoPipeline<>(input -> {
             O middle = execute(input);
             return nextStage.execute(middle);
