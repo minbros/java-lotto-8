@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static lotto.domain.LottoRules.LOTTO_NUMBER_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,7 +25,7 @@ class RankTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, Lotto.SIZE + 1})
+    @ValueSource(ints = {-1, LOTTO_NUMBER_COUNT + 1})
     void 잘못된_매칭_개수를_전달하면_예외가_발생한다(int matchCount) {
         assertThatThrownBy(() -> Rank.of(matchCount, false))
                 .isInstanceOf(RankException.class)
