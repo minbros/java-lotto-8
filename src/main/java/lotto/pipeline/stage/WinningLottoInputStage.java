@@ -1,7 +1,10 @@
 package lotto.pipeline.stage;
 
 import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 import lotto.dto.LottoData;
+import lotto.util.InputParser;
+import lotto.util.RetryingInputSupplier;
 import lotto.view.InputView;
 
 import java.util.List;
@@ -16,6 +19,11 @@ public class WinningLottoInputStage implements Stage<List<Lotto>, LottoData> {
 
     @Override
     public LottoData execute(List<Lotto> lottoList) {
-        return null;
+        return RetryingInputSupplier.get(() -> {
+            List<Integer> winningNumbers = InputParser.parseNumbers(inputView.readWinningNumbers());
+            int bonusNumber = InputParser.parseNumber(inputView.readBonusNumber());
+            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            return new LottoData(lottoList, winningLotto);
+        });
     }
 }
