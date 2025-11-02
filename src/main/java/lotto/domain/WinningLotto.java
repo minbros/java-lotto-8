@@ -26,7 +26,7 @@ public record WinningLotto(Lotto lotto, int bonusNumber) {
         return otherLotto.contains(bonusNumber);
     }
 
-    private void validateBonusNumber(Lotto lotto, int bonusNumber) {
+    private static void validateBonusNumber(Lotto lotto, int bonusNumber) {
         if (isOutOfRange(bonusNumber)) {
             throw new LottoException(ErrorMessage.BONUS_INVALID_NUMBER_VALUE.getMessage());
         }

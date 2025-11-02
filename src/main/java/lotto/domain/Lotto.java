@@ -24,7 +24,7 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private static void validate(List<Integer> numbers) {
         if (hasInvalidCount(numbers)) {
             throw new LottoException(ErrorMessage.LOTTO_INVALID_NUMBER_COUNT.getMessage());
         }

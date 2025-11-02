@@ -25,7 +25,7 @@ public class AmountInputStage implements Stage<Void, Integer> {
         });
     }
 
-    private void validate(int amount) {
+    private static void validate(int amount) {
         if (amount > MAX_AMOUNT) {
             throw new IllegalArgumentException(ErrorMessage.AMOUNT_TOO_LARGE.getMessage());
         }
