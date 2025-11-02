@@ -16,11 +16,12 @@ public enum Rank {
     NONE(0, false, 0);
 
     private final int matchCount;
+    private final boolean matchesBonus;
     private final long prize;
 
-    @SuppressWarnings("unused")
     Rank(int matchCount, boolean matchesBonus, long prize) {
         this.matchCount = matchCount;
+        this.matchesBonus = matchesBonus;
         this.prize = prize;
     }
 
@@ -30,6 +31,14 @@ public enum Rank {
                 .filter(rank -> rank.matches(matchCount, matchesBonus))
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean hasBonus() {
+        return matchesBonus;
     }
 
     public long getPrize() {
