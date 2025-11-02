@@ -2,7 +2,7 @@ package lotto.dto;
 
 import lotto.domain.Rank;
 
-import java.util.EnumMap;
+import java.util.Map;
 
-public record LottoResult(EnumMap<Rank, Integer> ranks, double returnRate) {
+public record LottoResult(Map<Rank, Integer> ranks, double returnRate) {
 }
