@@ -13,6 +13,7 @@ public class OutputView {
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String PROMPT_FOR_SEPARATOR = "당첨 통계" + LINE_SEPARATOR + "--------------";
     private static final String PROMPT_FOR_COUNT = "개를 구매했습니다.";
+    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
     public void printLottoList(List<Lotto> lottoList) {
         int count = lottoList.size();
@@ -54,7 +55,7 @@ public class OutputView {
         return String.format("%d개 일치%s (%s원) - %d개",
                 rank.getMatchCount(),
                 bonusMessage,
-                NumberFormat.getInstance().format(rank.getPrize()),
+                NUMBER_FORMAT.format(rank.getPrize()),
                 count
         );
     }

@@ -6,10 +6,10 @@ import lotto.util.InputParser;
 import lotto.util.RetryingInputSupplier;
 import lotto.view.InputView;
 
+import static lotto.domain.LottoRules.MAX_AMOUNT;
+
 @SuppressWarnings("ClassCanBeRecord")
 public class AmountInputStage implements Stage<Void, Integer> {
-    private static final int MAX_AMOUNT = 1_000_000;
-
     private final InputView inputView;
 
     public AmountInputStage(InputView inputView) {

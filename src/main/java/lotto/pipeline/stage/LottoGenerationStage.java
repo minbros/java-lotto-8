@@ -4,8 +4,8 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static lotto.domain.LottoRules.PRICE_PER_LOTTO;
 
@@ -19,12 +19,11 @@ public class LottoGenerationStage implements Stage<Integer, List<Lotto>> {
 
     @Override
     public List<Lotto> execute(Integer amount) {
-        List<Lotto> lottoList = new ArrayList<>();
-        for (int i = 0; i < amount / PRICE_PER_LOTTO; i++) {
-            Lotto lotto = LottoGenerator.generate();
-            lottoList.add(lotto);
-        }
+        int lottoCount = amount / PRICE_PER_LOTTO;
+        List<Lotto> lottoList = IntStream.range(0, lottoCount)
+                .mapToObj(i -> LottoGenerator.generate())
+                .toList();
         outputView.printLottoList(lottoList);
-        return List.copyOf(lottoList);
+        return lottoList;
     }
 }

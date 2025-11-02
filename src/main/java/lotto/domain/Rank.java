@@ -52,7 +52,7 @@ public enum Rank {
     }
 
     private boolean matches(int matchCount, boolean matchesBonus) {
-        if (this == SECOND) {
+        if (this.matchesBonus) {
             return this.matchCount == matchCount && matchesBonus;
         }
         return this.matchCount == matchCount;
