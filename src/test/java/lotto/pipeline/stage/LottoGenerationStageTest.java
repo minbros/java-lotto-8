@@ -22,7 +22,7 @@ class LottoGenerationStageTest {
 
         Assertions.assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    List<Lotto> lottoList = stage.execute(4);
+                    List<Lotto> lottoList = stage.execute(4000);
                     assertThat(lottoList).extracting(Lotto::getNumbers)
                             .containsExactly(numbers1, numbers2, numbers3, numbers4);
                 },
