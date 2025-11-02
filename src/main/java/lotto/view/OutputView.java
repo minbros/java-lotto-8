@@ -16,9 +16,10 @@ public class OutputView {
 
     public void printLottoList(List<Lotto> lottoList) {
         int count = lottoList.size();
-        System.out.println(getLottoCountMessage(count));
-        lottoList.forEach(lotto -> System.out.println(lotto.getNumbers()));
-        System.out.println();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(getLottoCountMessage(count)).append(LINE_SEPARATOR);
+        lottoList.forEach(lotto -> stringBuilder.append(lotto.getNumbers()).append(LINE_SEPARATOR));
+        System.out.println(stringBuilder);
     }
 
     public void printResult(LottoResult result) {
