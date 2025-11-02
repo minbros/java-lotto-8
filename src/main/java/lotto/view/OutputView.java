@@ -23,7 +23,7 @@ public class OutputView {
 
     public void printResult(LottoResult result) {
         String outputMessage = PROMPT_FOR_SEPARATOR + LINE_SEPARATOR +
-                getWinningMessages(result) + LINE_SEPARATOR +
+                getWinningMessages(result) +
                 getReturnRateMessage(result);
         System.out.println(outputMessage);
     }
@@ -37,11 +37,11 @@ public class OutputView {
                 .filter(entry -> entry.getKey() != Rank.NONE)
                 .sorted(Comparator.comparingInt(e -> e.getKey().getMatchCount()))
                 .map(entry -> formatWinningMessage(entry.getKey(), entry.getValue()))
-                .collect(Collectors.joining(LINE_SEPARATOR));
+                .collect(Collectors.joining());
     }
 
     private static String getReturnRateMessage(LottoResult result) {
-        return String.format("총 수익률은 %.2f입니다.%n", result.returnRate());
+        return String.format("총 수익률은 %.1f%%입니다.%n", result.returnRate() * 100);
     }
 
     private static String formatWinningMessage(Rank rank, int count) {

@@ -4,6 +4,7 @@ import lotto.pipeline.stage.Stage;
 
 import java.util.function.Function;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class LottoPipeline<I, O> {
     private final Function<I, O> function;
 

@@ -34,7 +34,7 @@ public class ResultCalculateStage implements Stage<LottoData, LottoResult> {
     private static double calculateReturnRate(int lottoCount, EnumMap<Rank, Integer> ranks) {
         int amount = lottoCount * PRICE_PER_LOTTO;
         long totalPrize = calculateTotalPrize(ranks);
-        return (double) (totalPrize - amount) / amount;
+        return (double) totalPrize / amount;
     }
 
     private static long calculateTotalPrize(EnumMap<Rank, Integer> ranks) {

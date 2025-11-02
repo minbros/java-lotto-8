@@ -34,7 +34,7 @@ class ResultCalculateStageTest {
         ));
         int amount = PRICE_PER_LOTTO * sampleLottoList.size();
         long totalPrize = getTotalPrize(expectedRanks);
-        double expectedReturnRate = (double) (totalPrize - amount) / amount;
+        double expectedReturnRate = (double) totalPrize / amount;
 
         LottoResult lottoResult = stage.execute(lottoData);
 
