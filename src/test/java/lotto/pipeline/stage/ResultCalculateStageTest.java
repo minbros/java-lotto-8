@@ -33,7 +33,7 @@ class ResultCalculateStageTest {
                 Rank.FOURTH, 1, Rank.FIFTH, 1, Rank.NONE, 1
         ));
         int amount = PRICE_PER_LOTTO * sampleLottoList.size();
-        int totalPrize = getTotalPrize(expectedRanks);
+        long totalPrize = getTotalPrize(expectedRanks);
         double expectedReturnRate = (double) (totalPrize - amount) / amount;
 
         LottoResult lottoResult = stage.execute(lottoData);
@@ -42,9 +42,9 @@ class ResultCalculateStageTest {
                 .containsExactly(expectedRanks, expectedReturnRate);
     }
 
-    private static int getTotalPrize(EnumMap<Rank, Integer> expectedRanks) {
+    private static long getTotalPrize(EnumMap<Rank, Integer> expectedRanks) {
         return expectedRanks.entrySet().stream()
-                .mapToInt(rank -> rank.getKey().getPrize() * rank.getValue())
+                .mapToLong(rank -> rank.getKey().getPrize() * rank.getValue())
                 .sum();
     }
 }
