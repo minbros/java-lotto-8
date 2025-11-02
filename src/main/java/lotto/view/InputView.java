@@ -8,17 +8,21 @@ public class InputView {
     private static final String PROMPT_FOR_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public String readAmount() {
-        System.out.println(PROMPT_FOR_PURCHASE);
-        return Console.readLine();
+        return readWithPrompt(PROMPT_FOR_PURCHASE);
     }
 
     public String readWinningNumbers() {
-        System.out.println(PROMPT_FOR_WINNING_NUMBERS);
-        return Console.readLine();
+        return readWithPrompt(PROMPT_FOR_WINNING_NUMBERS);
     }
 
     public String readBonusNumber() {
-        System.out.println(PROMPT_FOR_BONUS_NUMBER);
-        return Console.readLine();
+        return readWithPrompt(PROMPT_FOR_BONUS_NUMBER);
+    }
+
+    private String readWithPrompt(String prompt) {
+        System.out.println(prompt);
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 }

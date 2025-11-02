@@ -23,7 +23,7 @@ public class OutputView {
 
     public void printResult(LottoResult result) {
         String outputMessage = PROMPT_FOR_SEPARATOR + LINE_SEPARATOR +
-                getWinningMessages(result) +
+                getWinningMessages(result) + LINE_SEPARATOR +
                 getReturnRateMessage(result);
         System.out.println(outputMessage);
     }
@@ -35,13 +35,13 @@ public class OutputView {
     private static String getWinningMessages(LottoResult result) {
         return result.ranks().entrySet().stream()
                 .filter(entry -> entry.getKey() != Rank.NONE)
-                .sorted(Comparator.comparingInt(e -> e.getKey().getMatchCount()))
+                .sorted(Comparator.comparingLong(e -> e.getKey().getPrize()))
                 .map(entry -> formatWinningMessage(entry.getKey(), entry.getValue()))
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
     private static String getReturnRateMessage(LottoResult result) {
-        return String.format("총 수익률은 %.1f%%입니다.%n", result.returnRate() * 100);
+        return String.format("총 수익률은 %.1f%%입니다.", result.returnRate() * 100);
     }
 
     private static String formatWinningMessage(Rank rank, int count) {
@@ -50,7 +50,7 @@ public class OutputView {
             bonusMessage = ", 보너스 볼 일치";
         }
 
-        return String.format("%d개 일치%s (%s원) - %d개%n",
+        return String.format("%d개 일치%s (%s원) - %d개",
                 rank.getMatchCount(),
                 bonusMessage,
                 NumberFormat.getInstance().format(rank.getPrize()),
