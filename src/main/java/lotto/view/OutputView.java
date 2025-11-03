@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
  */
 public class OutputView {
     private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final String PROMPT_FOR_SEPARATOR = "당첨 통계" + LINE_SEPARATOR + "-".repeat(50);
-    private static final String PROMPT_FOR_COUNT = "개를 구매했습니다.";
+    private static final String BONUS_BALL_MATCH_MESSAGE = ", 보너스 볼 일치";
+    private static final String WINNING_STATISTICS_HEADER = "당첨 통계" + LINE_SEPARATOR + "-".repeat(50);
+    private static final String PURCHASE_MESSAGE_SUFFIX = "개를 구매했습니다.";
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 
     public void printLottoList(List<Lotto> lottoList) {
@@ -27,14 +28,14 @@ public class OutputView {
     }
 
     public void printResult(LottoResult result) {
-        String outputMessage = PROMPT_FOR_SEPARATOR + LINE_SEPARATOR +
+        String outputMessage = WINNING_STATISTICS_HEADER + LINE_SEPARATOR +
                 getWinningMessages(result) + LINE_SEPARATOR +
                 getReturnRateMessage(result);
         System.out.println(outputMessage);
     }
 
     private static String getLottoCountMessage(int count) {
-        return count + PROMPT_FOR_COUNT;
+        return count + PURCHASE_MESSAGE_SUFFIX;
     }
 
     private static String getWinningMessages(LottoResult result) {
@@ -52,7 +53,7 @@ public class OutputView {
     private static String formatWinningMessage(Rank rank, int count) {
         String bonusMessage = "";
         if (rank.hasBonus()) {
-            bonusMessage = ", 보너스 볼 일치";
+            bonusMessage = BONUS_BALL_MATCH_MESSAGE;
         }
 
         return String.format("%d개 일치%s (%s원) - %d개",
