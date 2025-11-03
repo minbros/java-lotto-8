@@ -40,7 +40,7 @@ public class OutputView {
     private static String getWinningMessages(LottoResult result) {
         return result.ranks().entrySet().stream()
                 .filter(entry -> entry.getKey() != Rank.NONE)
-                .sorted(Comparator.comparingLong(e -> e.getKey().getPrize()))
+                .sorted(Comparator.comparingLong(entry -> entry.getKey().getPrize()))
                 .map(entry -> formatWinningMessage(entry.getKey(), entry.getValue()))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
