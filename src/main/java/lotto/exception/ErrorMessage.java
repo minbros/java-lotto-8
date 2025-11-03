@@ -2,6 +2,9 @@ package lotto.exception;
 
 import lotto.domain.LottoRules;
 
+/**
+ * 에러 메시지를 담은 enum 클래스입니다.
+ */
 public enum ErrorMessage {
     AMOUNT_DOES_NOT_FIT("구매 금액은 " + LottoRules.PRICE_PER_LOTTO + " 단위여야 합니다."),
     AMOUNT_TOO_LARGE("구매 금액이 너무 큽니다."),
@@ -26,6 +29,9 @@ public enum ErrorMessage {
         this.message = message;
     }
 
+    /**
+     * @return {@value ERROR_PREFIX} 문구가 추가된 에러 메시지
+     */
     public String getMessage() {
         return ERROR_PREFIX + message;
     }

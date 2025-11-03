@@ -8,6 +8,9 @@ import lotto.view.InputView;
 
 import static lotto.domain.LottoRules.MAX_AMOUNT;
 
+/**
+ * 구매 금액을 입력받아 검증 후 {@link Integer} 타입으로 변환하는 클래스입니다.
+ */
 @SuppressWarnings("ClassCanBeRecord")
 public class AmountInputStage implements Stage<Void, Integer> {
     private final InputView inputView;

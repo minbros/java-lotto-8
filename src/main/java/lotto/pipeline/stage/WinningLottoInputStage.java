@@ -9,6 +9,9 @@ import lotto.view.InputView;
 
 import java.util.List;
 
+/**
+ * 사용자로부터 당첨 번호와 보너스 번호를 입력받고, 생성된 로또 번호를 가져와 {@link LottoData}를 생성합니다.
+ */
 @SuppressWarnings("ClassCanBeRecord")
 public class WinningLottoInputStage implements Stage<List<Lotto>, LottoData> {
     private final InputView inputView;

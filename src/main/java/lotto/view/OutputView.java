@@ -9,6 +9,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 출력을 담당하는 클래스입니다.
+ */
 public class OutputView {
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String PROMPT_FOR_SEPARATOR = "당첨 통계" + LINE_SEPARATOR + "-".repeat(50);

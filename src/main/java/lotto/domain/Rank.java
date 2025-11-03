@@ -7,6 +7,9 @@ import java.util.Arrays;
 
 import static lotto.domain.LottoRules.*;
 
+/**
+ * 당첨 결과를 정의한 enum 클래스입니다.
+ */
 public enum Rank {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -25,6 +28,12 @@ public enum Rank {
         this.prize = prize;
     }
 
+    /**
+     * @param matchCount   일치하는 번호 개수
+     * @param matchesBonus 보너스 번호 일치 여부
+     * @return 알맞은 Rank값
+     * @throws RankException matchCount가 음수거나 {@value LottoRules#NUMBER_COUNT}보다 클 경우
+     */
     public static Rank of(int matchCount, boolean matchesBonus) {
         validateMatchCount(matchCount);
         return Arrays.stream(values())

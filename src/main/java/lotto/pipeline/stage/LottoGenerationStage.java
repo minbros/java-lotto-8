@@ -9,6 +9,11 @@ import java.util.stream.IntStream;
 
 import static lotto.domain.LottoRules.PRICE_PER_LOTTO;
 
+/**
+ * 구매 금액을 입력받아 해당되는 개수만큼 로또를 생성하고, 출력하는 클래스입니다.
+ *
+ * @see Lotto
+ */
 @SuppressWarnings("ClassCanBeRecord")
 public class LottoGenerationStage implements Stage<Integer, List<Lotto>> {
     private final OutputView outputView;

@@ -6,6 +6,9 @@ import java.util.List;
 
 import static lotto.domain.LottoRules.*;
 
+/**
+ * 랜덤 로또를 생성하는 유틸리티 클래스입니다.
+ */
 public final class LottoGenerator {
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, NUMBER_COUNT);

@@ -10,6 +10,9 @@ import java.util.*;
 
 import static lotto.domain.LottoRules.PRICE_PER_LOTTO;
 
+/**
+ * {@link LottoData}를 가져와 당첨 결과와 수익률을 {@link LottoResult}로 반환합니다.
+ */
 public class ResultCalculateStage implements Stage<LottoData, LottoResult> {
     @Override
     public LottoResult execute(LottoData lottoData) {

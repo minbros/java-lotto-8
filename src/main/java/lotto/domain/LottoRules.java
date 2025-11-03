@@ -3,6 +3,9 @@ package lotto.domain;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * 공용으로 사용되는 도메인 규칙을 담은 클래스입니다.
+ */
 public final class LottoRules {
     public static final int NUMBER_COUNT = 6;
     public static final int MINIMUM_NUMBER = 1;
