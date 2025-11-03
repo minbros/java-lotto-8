@@ -19,10 +19,13 @@ public class WinningLottoInputStage implements Stage<List<Lotto>, LottoData> {
 
     @Override
     public LottoData execute(List<Lotto> lottoList) {
-        return RetryingInputSupplier.get(() -> {
+        Lotto lotto = RetryingInputSupplier.get(() -> {
             List<Integer> winningNumbers = InputParser.parseNumbers(inputView.readWinningNumbers());
+            return new Lotto(winningNumbers);
+        });
+        return RetryingInputSupplier.get(() -> {
             int bonusNumber = InputParser.parseNumber(inputView.readBonusNumber());
-            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
             return new LottoData(lottoList, winningLotto);
         });
     }

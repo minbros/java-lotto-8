@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final String PROMPT_FOR_SEPARATOR = "당첨 통계" + LINE_SEPARATOR + "--------------";
+    private static final String PROMPT_FOR_SEPARATOR = "당첨 통계" + LINE_SEPARATOR + "-".repeat(50);
     private static final String PROMPT_FOR_COUNT = "개를 구매했습니다.";
     private static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance();
 

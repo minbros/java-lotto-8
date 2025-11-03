@@ -8,7 +8,7 @@ public final class RetryingInputSupplier {
             try {
                 return supplier.get();
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage() + System.lineSeparator());
+                System.out.println(e.getMessage());
             }
         }
     }
