@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.exception.ErrorMessage;
 import lotto.exception.LottoException;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,7 +18,6 @@ class LottoTest {
                 .hasMessageContaining(ErrorMessage.LOTTO_INVALID_NUMBER_COUNT.getMessage());
     }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void 로또_번호에_중복된_숫자가_있으면_예외가_발생한다() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 5);
