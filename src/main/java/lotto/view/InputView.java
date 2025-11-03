@@ -1,13 +1,14 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.InputParser;
 
 /**
  * 입력을 담당하는 클래스입니다.
  */
 public class InputView {
     private static final String PROMPT_FOR_PURCHASE = "구매금액을 입력해 주세요.";
-    private static final String PROMPT_FOR_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    private static final String PROMPT_FOR_WINNING_NUMBERS = "당첨 번호를 입력해 주세요. ('" + InputParser.SEPARATOR + "' 기준으로 구분)";
     private static final String PROMPT_FOR_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public String readAmount() {
